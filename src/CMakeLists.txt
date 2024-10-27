@@ -1,6 +1,6 @@
 add_executable(main main.cpp)
 
-add_subdirectory(treelist)
+add_subdirectory(lists)
 
 target_link_libraries(main
     treelist
