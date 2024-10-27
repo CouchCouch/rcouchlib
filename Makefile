@@ -1,11 +1,11 @@
-main: treelist.o treenode.o main.o
-	g++ -o main treelist.o treenode.o main.o 
+test: treelist.o treenode.o main.o
+	g++ -g -o  main main.o treelist.o treenode.o
 
-treelist.o: ./src/treelist/treelist.cpp ./src/treelist/treelist.h
-	g++ -c ./src/treelist/treelist.cpp -o treelist.o
+treelist.o: src/treelist/treelist.cpp src/treelist/treelist.h
+	g++ -g -c -I src/treelist src/treelist/treelist.cpp
 
-treenode.o: ./src/treelist/treenode.cpp ./src/treelist/treenode.h
-	g++ -c ./src/treelist/treenode.cpp -o treenode.o
+treenode.o: src/treelist/treenode.cpp src/treelist/treenode.h
+	g++ -g -c -I src/treelist src/treelist/treenode.cpp
 
-main.o: ./src/main.cpp
-	g++ -c ./src/main.cpp -o main.o
+main.o: src/main.cpp
+	g++ -g -c -I src/treelist src/main.cpp

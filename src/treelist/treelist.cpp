@@ -1,3 +1,10 @@
+/**
+ * @file treelist.cpp
+ * @author Ryan Couchman
+ * @brief Implementation of a binary search tree.
+ * @version 0.1
+ * @date 2024-10-26
+ */
 #include "treelist.h"
 #include <iostream>
 
@@ -53,63 +60,66 @@ void TreeList<T>::insert(T value)
 template <typename T>
 T TreeList<T>::remove(T value)
 {
-    TreeNode<T> * current = head;
+    if (this->head == nullptr) {
+        return NULL;
+    }
+
+    TreeNode<T> * current = this->head;
     TreeNode<T> * parent = nullptr;
-    while (current) {
-        if (current->getValue() == value) {
-            break;
-        }
-        parent = current;
-        if (current->getValue() > value) {
+    while (current)
+    {
+        if(current->getValue() > value) {
+            parent = current;
             current = current->getLeft();
-        } else {
+        } else if(current->getValue() < value) {
+            parent = current;
             current = current->getRight();
+        } else {
+            if(!current->getLeft() && !current->getRight()) {
+                if(current != this->head) {
+                    if(parent->getLeft() == current) {
+                        parent->setLeft(nullptr);
+                    } else {
+                        parent->setRight(nullptr);
+                    }
+                } else {
+                    this->head = nullptr;
+                }
+                T value = current->getValue();
+                delete current;
+                return value;
+            } else if(current->getLeft() && current->getRight()) {
+                TreeNode<T> * successor = current->getRight();
+                while (successor->getLeft())
+                {
+                    successor = successor->getLeft();
+                }
+                T value = successor->getValue();
+                remove(value);
+                current->setValue(value);
+                return value;
+            } else {
+                TreeNode<T> * child = current->getLeft() ? current->getLeft() : current->getRight();
+
+                if(current != this->head) {
+                    if(parent->getLeft() == current) {
+                        parent->setLeft(child);
+                    } else {
+                        parent->setRight(child);
+                    }
+                } else {
+                    this->head = child;
+                }
+
+                T value = current->getValue();
+                delete current;
+                return value;
+            }
         }
     }
 
-    if (current == nullptr) {
-        return nullptr;
-    }
 
-    T removedValue = current->getValue();
-    if (current->getLeft() == nullptr && current->getRight() == nullptr) {
-        if (parent && parent->getLeft() == current) {
-            parent->setLeft(nullptr);
-        } else {
-            parent->setRight(nullptr);
-        }
-        delete current;
-    } else if (current->getLeft() == nullptr) {
-        if (parent && parent->getLeft() == current) {
-            parent->setLeft(current->getRight());
-        } else {
-            parent->setRight(current->getRight());
-        }
-        delete current;
-    } else if (current->getRight() == nullptr) {
-        if (parent && parent->getLeft() == current) {
-            parent->setLeft(current->getLeft());
-        } else {
-            parent->setRight(current->getLeft());
-        }
-        delete current;
-    } else {
-        TreeNode<T> * successor = current->getRight();
-        TreeNode<T> * successorParent = current;
-        while (successor->getLeft()) {
-            successorParent = successor;
-            successor = successor->getLeft();
-        }
-        current->setValue(successor->getValue());
-        if (successorParent->getLeft() == successor) {
-            successorParent->setLeft(successor->getRight());
-        } else {
-            successorParent->setRight(successor->getRight());
-        }
-        delete successor;
-    }
-
-    return removedValue;
+    return NULL;
 }
 
 template <typename T>

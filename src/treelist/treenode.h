@@ -1,3 +1,10 @@
+/**
+ * @file treenode.h
+ * @author Ryan Couchman
+ * @brief A node for a binary tree.
+ * @version 0.1
+ * @date 2024-10-26
+ */
 #ifndef TREENODE_H
 #define TREENODE_H
 
@@ -25,6 +32,13 @@ public:
     ~TreeNode();
 
     /**
+     * @brief Set the Value object
+     * 
+     * @param value the value of the node
+     */
+    void setValue(T value);
+
+    /**
      * @brief Get the Value object
      * 
      * @return T the value of the node
@@ -48,14 +62,14 @@ public:
     /**
      * @brief Get the Left object
      * 
-     * @return T the left node
+     * @return TreeNode<T> the left node
      */
     TreeNode<T> * getLeft();
 
     /**
      * @brief Get the Right object
      * 
-     * @return T the right node
+     * @return TreeNode<T> the right node
      */
     TreeNode<T> * getRight();  
 

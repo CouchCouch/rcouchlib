@@ -1,3 +1,10 @@
+/**
+ * @file treelist.h
+ * @author Ryan Couchman
+ * @brief A list that is implemented as a binary search tree.
+ * @version 0.1
+ * @date 2024-10-26
+ */
 #ifndef TREELIST_H
 #define TREELIST_H
 #include "treenode.h"

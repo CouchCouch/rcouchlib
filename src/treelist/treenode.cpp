@@ -1,3 +1,10 @@
+/**
+ * @file treenode.cpp
+ * @author Ryan Couchman
+ * @brief Implementation of a binary tree node.
+ * @version 0.1
+ * @date 2024-10-26
+ */
 #include<iostream>
 #include "treenode.h"
 
@@ -18,6 +25,12 @@ TreeNode<T>::~TreeNode()
     if(this->left) {
         delete this->left;
     }
+}
+
+template <typename T>
+void TreeNode<T>::setValue(T value)
+{
+    this->value = value;
 }
 
 template <typename T>
