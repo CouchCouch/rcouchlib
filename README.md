@@ -18,3 +18,6 @@ A library of different functions and data structures written in C++ by me, Ryan 
  - queues
 ### maybe:
  - some n-ary trees
+ - a testing framework
+
+also plan on setting up a CI once I implement some tests (and maybe  write my own testing framework)
