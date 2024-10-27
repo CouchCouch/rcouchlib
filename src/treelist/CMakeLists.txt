@@ -1,15 +1,11 @@
-add_library(treelist "")
+add_library(treenode treenode.cpp)
 
-target_sources(treelist
-    PRIVATE
-        treelist.cpp
-        treenode.cpp
-    PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}/treelist.h
-        ${CMAKE_CURRENT_LIST_DIR}/treenode.h
+add_library(treelist treelist.cpp)
+
+target_link_libraries(treelist
+    treenode
 )
 
-target_include_directories(treelist
-    PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}
+target_include_directories(treelist PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
 )

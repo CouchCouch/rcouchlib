@@ -8,6 +8,7 @@
 #ifndef TREELIST_H
 #define TREELIST_H
 #include "treenode.h"
+#include "treenode.cpp"
 #include "list.h"
 
 template <typename T>

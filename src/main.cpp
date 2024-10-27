@@ -1,5 +1,6 @@
 #include <iostream>
 #include "treelist.h"
+#include "treelist.cpp"
 
 int main(int, char**){
     std::cout << "Testing Insert" << std::endl;
