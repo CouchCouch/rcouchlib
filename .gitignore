@@ -1,14 +1,12 @@
-# Ignore all
-*
-
-# Unignore all with extensions
-!*.*
-
-# Unignore all dirs
-!*/
-
+# CMake build directory
 build
-.vscode
-*.o
 
-!Makefile
+# Visual Studio Code
+.vscode
+
+# Executables
+*.o
+*.exe
+
+# Local todo list
+todo.md
