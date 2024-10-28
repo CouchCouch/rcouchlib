@@ -7,6 +7,3 @@ build
 # Executables
 *.o
 *.exe
-
-# Local todo list
-todo.md
